@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+      <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+   </head>
+   <body>
+      <div class="container">
+         <h2>Drools Editor</h2>
+         <div class="expression">
+            <div class="dropdown">
+               <button class="btn btn-primary dropdown-toggle"  style="width:56px" type="button" data-toggle="dropdown">Start</button>
+               <ul class="operator dropdown-menu">
+                  <li class="logical-item"><a href="#">Logical Operator</a></li>
+                  <li class="conditional-item"><a href="#">Conditional Operator</a></li>
+               </ul>
+            </div>
+         </div>
+         <div class="logical-construct" style="display: none">
+            <div class="dropdown dropdown-logical" style="display: inline-block;">
+               <button class="btn btn-primary dropdown-toggle" style="display: inline-block; width:56px" type="button" data-toggle="dropdown">AND</button>
+               <ul class="operator dropdown-menu">
+                  <li class="logical option and"><a href="#">AND</a></li>
+                  <li class=" logical option or"><a href="#">OR</a></li>
+                  <li class=" logical option not"><a href="#">NOT</a></li>
+               </ul>
+            </div>
+            <div style="display: inline-block; width: 30px; height: 2px; background: black"></div>
+            <div style="display: inline-block; width: 30px; height: 2px; background: black"></div>
+            <div style="display: inline-block;">
+               <div class="dropdown" style="display: inline-block;">
+                  <button class="btn btn-primary dropdown-toggle" style="display: inline-block;" type="button" data-toggle="dropdown">--Item--</button>
+                  <ul class="operator dropdown-menu">
+                     <li class="option"><a href="#">noOfRequirements</a></li>
+                     <li class="option"><a href="#">noOfFunctionalArchitectureElements</a></li>
+                     <li class="option"><a href="#">noOfTechnicalArchitectureElements</a></li>
+                     <li class="option"><a href="#">noOfBusinessContexts</a></li>
+                     <li class="option"><a href="#">noOfTechnicalArchitectures</a></li>
+                     <li class="option"><a href="#">noOfFunctionalArchitectures</a></li>
+                  </ul>
+               </div>
+               <div class="dropdown" style="display: inline-block;">
+                  <button class="btn btn-primary dropdown-toggle" style="display: inline-block;" type="button" data-toggle="dropdown">--Condition--</button>
+                  <ul class="operator dropdown-menu">
+                     <li class="condition option"><a href="#">></a></li>
+                     <li class="condition option"><a href="#"><</a></li>
+                     <li class="condition option"><a href="#">==</a></li>
+                     <li class="condition option"><a href="#">!=</a></li>
+                     <li class="condition option"><a href="#">>=</a></li>
+                     <li class="condition option"><a href="#"><=</a></li>
+                  </ul>
+               </div>
+               <div class="dropdown" style="display: inline-block;">
+                  <input type="number" class="condition-value" placeholder="value" name="value" min="0" max="100"></input>
+               </div>
+            </div>
+            <div style="margin-left: 90px; height: 40px; width: 2px; background: black; margin-top: -10px;"></div>
+            <div style=" margin-left: 94px; margin-top: -18px">
+               <div style="display: inline-block; width: 30px; height: 2px; background: black"></div>
+               <div class="dropdown" style="display: inline-block;">
+                  <button class="btn btn-primary dropdown-toggle" style="display: inline-block;" type="button" data-toggle="dropdown">--Item--</button>
+                  <ul class="operator dropdown-menu">
+                     <li class="option"><a href="#">noOfRequirements</a></li>
+                     <li class="option"><a href="#">noOfFunctionalArchitectureElements</a></li>
+                     <li class="option"><a href="#">noOfTechnicalArchitectureElements</a></li>
+                     <li class="option"><a href="#">noOfBusinessContexts</a></li>
+                     <li class="option"><a href="#">noOfTechnicalArchitectures</a></li>
+                     <li class="option"><a href="#">noOfFunctionalArchitectures</a></li>
+                  </ul>
+               </div>
+               <div class="dropdown" style="display: inline-block;">
+                  <button class="btn btn-primary dropdown-toggle" style="display: inline-block;" type="button" data-toggle="dropdown">--Condition--</button>
+                  <ul class="operator dropdown-menu">
+                     <li class="condition option"><a href="#">></a></li>
+                     <li class="condition option"><a href="#"><</a></li>
+                     <li class="condition option"><a href="#">==</a></li>
+                     <li class="condition option"><a href="#">!=</a></li>
+                     <li class="condition option"><a href="#">>=</a></li>
+                     <li class="condition option"><a href="#"><=</a></li>
+                  </ul>
+               </div>
+               <div class="dropdown" style="display: inline-block;">
+                  <input type="number" class="condition-value" placeholder="value" name="value" min="0" max="100"></input>
+               </div>
+            </div>
+            <div class="sub-expression" style="margin-top: -12px; margin-left: 63px">
+             <div style="height: 40px; width: 2px; background: black; margin-left: 27px"></div>
+              <button class="btn btn-primary dropdown-toggle add-sub-exp" style="display: inline-block;margin-left: 8px;" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-plus"></span></button>
+            </div>
+            <div class="parent-expression">
+              <div class="test" style="height: 144px; width: 2px; background: black; margin-top: -108px; margin-left: 27px"></div>
+                <button class="btn btn-primary dropdown-toggle add-new-exp" style="display: inline-block; margin-left: 8px;" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-plus"></span></button>
+            </div>
+         </div>
+         
+      </div>
+      <script type="text/javascript">
+         $(function(){
+          id_count = 0;
+           $('.dropdown-menu>li').click(function(){
+             if($(this).is('.logical-item,.add-logical-exp ')){
+               $(this).closest('.dropdown').remove();
+               var logicalConstructClone = $('.logical-construct').clone(true,true).css('display','block');
+               logicalConstructClone.removeClass('logical-construct').addClass('logical-construct-used').attr('id', 'construct-id-'+id_count++);;
+               logicalConstructClone.appendTo( ".expression" );
+             } else if($(this).hasClass('conditional-item')){
+               alert('conditional')
+             }
+             if($(this).hasClass('option')){
+              var button = $(this).closest('.dropdown').find('button').empty().text($(this).find('a').text())
+             }
+           });
+
+           $('.add-sub-exp').click(function(){
+
+            var test = $('.logical-construct-used').find('.test')
+              $( test).each(function( index ) {
+                $(this).css('margin-top',parseInt($(test).css('margin-top'))- 178);
+                $(this).css('height',parseInt($(test).css('height'))+ 178);
+              });
+            var logicalConstructClone = $('.logical-construct').clone(true,true).css('display','block');
+            logicalConstructClone.removeClass('logical-construct').addClass('logical-construct-used').attr('id', 'construct-id-'+id_count++);
+            logicalConstructClone.appendTo($(this).closest('.sub-expression'));
+            /*do{
+              var logical_construct = $(this).closest('.logical-construct-used');
+              var test = $(logical_construct).children('.parent-expression').find('.test');
+              $(test).css('margin-top',parseInt($(test).css('margin-top'))- 178);
+              $(test).css('height',parseInt($(test).css('height'))+ 178);
+            }
+            while($(logical_construct).attr('id')!=$(logical_construct).closest('.logical-construct-used').attr('id'))*/
+            $(this).closest('.add-sub-exp').remove();
+           })
+
+           $('.add-new-exp').click(function(){
+            var element = this;
+            while($(element).closest('.logical-construct-used').parent().length!=0){
+              var sub_exp = $(element).closest('.logical-construct-used').parent();
+              
+                var test = $(sub_exp).closest('.logical-construct-used').children('.parent-expression').find('.test');
+                $(test).css('margin-top',parseInt($(test).css('margin-top'))- 178);
+                $(test).css('height',parseInt($(test).css('height'))+ 178);
+              element = $(sub_exp).closest('.logical-construct-used').children('.parent-expression').find('button');
+            }
+
+
+            var logicalConstructClone = $('.logical-construct').clone(true,true).css('display','block');
+            logicalConstructClone.removeClass('logical-construct').addClass('logical-construct-used').attr('id', 'construct-id-'+id_count++);
+            logicalConstructClone.appendTo($(this).closest('.logical-construct-used'));
+            $(this).closest('.add-new-exp').remove();
+           })
+
+        //  value box validation
+         $('.condition-value').change(function () {
+             if (parseInt(this.value) > 100) {
+                 this.value = 100; 
+             } else if(parseInt(this.value) < 0){
+                 this.value = 0;
+             }
+         });
+         
+         
+         });
+      </script>
+   </body>
+</html>
