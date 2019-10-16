@@ -1,0 +1,63 @@
+<html>
+<head>
+<title>Employee Signup Form</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+</head
+<body>
+<div class="container-fluid">
+<div class="row">
+<div class="col-xs-4">
+</div>
+<div class="col-xs-4">
+<div class="form-group">
+<label for="name"> Name </label> 
+<input id="name" class="form-control" type="text" name="Full Name"><br/>
+<label for="mail"> Email </label> 
+<input id="mail" class="form-control" type="text" name="Email"><br/>
+<label for="uname"> User Name </label> 
+<input id="uname" class="form-control" type="text" name="Username"><br/>
+<label for="dept"> Department </label> 
+<select id="dept" class="form-control" name="Department">
+  <option value="0">-- Select --</option>>
+  <option value="1">IT</option>
+  <option value="2">HR</option>
+  <option value="3">Sales</option>
+  <option value="4">Marketing</option>
+</select><br/>
+<label for="name"> Reporting Manager </label> 
+<input id="rmgr" class="form-control" type="text" name="Reporting Manager "><br/>
+<label for="totexp"> Total Experience </label> 
+<input id="totexp" class="form-control" type="text" name="Total Experience"><br/>
+<label for="cmnt"> Comments </label> 
+<input id="cmnt" class="form-control" type="text" name="Comments">
+<br/>
+<br/>
+<button class="btn btn-primary" id="btnSubmit" onclick="SendData()">Submit</button>
+</div>
+<div class="col-xs-4">
+</div>
+
+</div>
+</div>
+</div>
+<script >
+ function SendData()
+ {
+ console.log("hello world");
+var name = $('#name').val();
+var email = $('#mail').val();
+var uname = $('#uname').val();
+var dept = $('#dept :selected').text();
+var rmgr = $('#rmgr').val();
+var totexp = $('#totexp').val();
+var cmnt = $('#cmnt').val();
+ }
+
+
+
+</script>
+</body>
+</html>
+
